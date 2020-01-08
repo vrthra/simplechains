@@ -94,8 +94,8 @@ def get_next_char(log_level):
     set_of_chars = string.printable # ['[',']','{','}','(',')','<','>','1','0','a','b',':','"',',','.', '\'']
     idx = random.randrange (0,len(set_of_chars),1)
     input_char = set_of_chars[idx]
-    if (log_level):
-        print(input_char)
+    #if (log_level):
+        #print(input_char)
     return input_char
 
 def generate(log_level):
@@ -109,9 +109,9 @@ def generate(log_level):
     while True:
         char = get_next_char(log_level)
         curr_str = prev_str + str(char)
-        print(len(curr_str), curr_str[-1])
-        #rv, n, c = validate_json(curr_str, log_level)
-        rv, n, c = validate_parens(curr_str, log_level)
+        #print(len(curr_str), curr_str[-1])
+        rv, n, c = validate_json(curr_str, log_level)
+        #rv, n, c = validate_parens(curr_str, log_level)
         if log_level:
             print("%s n=%d, c=%s. Input string is %s" % (rv,n,c,curr_str))
         if rv == "complete":
