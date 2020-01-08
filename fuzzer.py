@@ -1,6 +1,7 @@
+#!/usr/bin/env python3
 # coding: utf-8
-import pudb
-bp = pudb.set_trace
+# import pudb
+# bp = pudb.set_trace
 
 
 def parens(xs):
