@@ -3,12 +3,19 @@
 
 # wrapper for Python JSON parser
 
+COMPLETE = 0
+INCOMPLETE = 1
+WRONG = 2
+
 import json
-def validate_json(input_str):
+def validate(input_str):
     """ return:
         rv: "complete", "incomplete" or "wrong", 
         n: the index of the character -1 if not applicable
         c: the character where error happened  "" if not applicable
+
+        The n and c are extra information that is useful but not strictly
+        needed.
     """
     try:
         json.loads(input_str)
@@ -49,14 +56,13 @@ import sys
 def main(fn):
     with open(fn) as f:
         inp = f.read()
-        #print(repr(inp))
-        rv, n, c = validate_json(inp)
+        rv, n, c = validate(inp)
         if rv == 'complete':
-            sys.exit(0)
+            sys.exit(COMPLETE)
         elif rv == 'incomplete':
-            sys.exit(1)
+            sys.exit(INCOMPLETE)
         elif rv == 'wrong':
-            sys.exit(2)
+            sys.exit(WRONG)
         else:
             assert False
 
